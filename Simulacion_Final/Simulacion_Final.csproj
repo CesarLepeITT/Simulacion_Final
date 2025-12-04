@@ -46,14 +46,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormaAplicacionDeSimulacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormaAplicacionDeSimulacion.Designer.cs">
+      <DependentUpon>FormaAplicacionDeSimulacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormaPrueba2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormaPrueba2.Designer.cs">
+      <DependentUpon>FormaPrueba2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormaPrueba1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormaPrueba1.Designer.cs">
+      <DependentUpon>FormaPrueba1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormaMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormaMenu.Designer.cs">
+      <DependentUpon>FormaMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormaGenerarNumerosAleatorios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormaGenerarNumerosAleatorios.Designer.cs">
+      <DependentUpon>FormaGenerarNumerosAleatorios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneradorNumerosPseudoaleatorios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormaMenu.resx">
+      <DependentUpon>FormaMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

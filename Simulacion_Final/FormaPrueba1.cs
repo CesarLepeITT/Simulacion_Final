@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Simulacion_Final
 {
-    public partial class Form1 : Form
+    public partial class FormaPrueba1 : Form
     {
-        public Form1()
+        public FormaPrueba1()
         {
             InitializeComponent();
         }
