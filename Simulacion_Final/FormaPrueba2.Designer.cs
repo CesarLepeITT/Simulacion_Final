@@ -24,7 +24,7 @@ namespace Simulacion_Final
         private TextBox txtValorDistribucion;
 
         private Button btnProbar;
-        private DataGridView dgvCorridas; // <--- Nuevo componente
+        private DataGridView dgvCorridas; 
 
         // Etiquetas
         private Label lblValorDistribucion;
@@ -59,7 +59,7 @@ namespace Simulacion_Final
             this.txtValorDistribucion = new TextBox();
 
             this.btnProbar = new Button();
-            this.dgvCorridas = new DataGridView(); // <--- Inicialización
+            this.dgvCorridas = new DataGridView(); 
 
             this.lblValorDistribucion = new Label();
             this.lblGradoConfianza = new Label();
@@ -305,14 +305,14 @@ namespace Simulacion_Final
                 txtValorEsperado.Text = valorEsperado.ToString("F4");
                 txtVarianza.Text = desviacionEstandar.ToString("F4");
                 txtEstadistico.Text = datEstadisticos.ToString("F4");
-                txtNCorridas.Text = (nCorridas + 1).ToString(); // Ajuste visual (+1) para coincidir con la tabla
+                txtNCorridas.Text = (nCorridas + 1).ToString(); 
 
                 // Conclusión
                 bool pasaPrueba = (datEstadisticos > zcriticoInf && datEstadisticos < zcritico);
 
                 lblConclusion.Text = pasaPrueba
-                    ? "Los datos están distribuidos uniformemente (Independientes)."
-                    : "Los datos NO están distribuidos uniformemente.";
+                    ? "Los datos están distribuidos uniformemente."
+                    : "Los datos no están distribuidos uniformemente.";
 
                 lblConclusion.ForeColor = pasaPrueba ? Color.Green : Color.Red;
             }

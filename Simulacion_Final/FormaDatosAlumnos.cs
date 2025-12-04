@@ -15,6 +15,7 @@ namespace Simulacion_Final
         public FormaDatosAlumnos()
         {
             InitializeComponent();
+            AplicarEstilo();
         }
     }
 }

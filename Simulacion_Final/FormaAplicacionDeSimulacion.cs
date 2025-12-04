@@ -15,6 +15,8 @@ namespace Simulacion_Final
         public FormaAplicacionDeSimulacion()
         {
             InitializeComponent();
+            AplicarEstiloPersonalizado(); 
+            _gestorArchivos = new GestorArchivos();
         }
     }
 }
