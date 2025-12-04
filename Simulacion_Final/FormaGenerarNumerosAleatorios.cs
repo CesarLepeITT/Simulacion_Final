@@ -14,7 +14,16 @@ namespace Simulacion_Final
     {
         public FormaGenerarNumerosAleatorios()
         {
+            // 1. Crear los controles visuales
             InitializeComponent();
+
+            // 2. Inicializar lógica
+            _gestorArchivos = new GestorArchivos();
+
+            // 3. Configurar valores por defecto y estilos
+            ConfigurarValoresIniciales();
+            AplicarEstilo();
+
         }
     }
 }

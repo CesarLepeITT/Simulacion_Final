@@ -11,7 +11,7 @@ namespace Simulacion_Final
         // Se encarga de generar los números pseudoaleatorios según los parámetros dados y escribirlos en un archivo csv ademas de dar la capacidad de
         // leer números pseudoaleatorios desde un archivo json
 
-        public DatosSimulacion GenerarNumeros(int xo, int a, int c, int m, int cantidad)
+        public DatosSimulacion GenerarNumeros(long xo, long a, long c, long m, int cantidad)
         {
             DatosSimulacion resultado = new DatosSimulacion();
 

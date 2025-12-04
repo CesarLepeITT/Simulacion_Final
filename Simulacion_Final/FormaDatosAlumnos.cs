@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Simulacion_Final
 {
-    public partial class FormaMenu : Form
+    public partial class FormaDatosAlumnos : Form
     {
-        public FormaMenu()
+        public FormaDatosAlumnos()
         {
             InitializeComponent();
-            ConfigurarUI();
-            GenerarMenu();
-
-            Boton_Click(listaBotones[0], EventArgs.Empty);
         }
-
     }
 }

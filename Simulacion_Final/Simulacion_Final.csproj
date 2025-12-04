@@ -50,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatosSimulacion.cs" />
+    <Compile Include="FormaDatosAlumnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormaDatosAlumnos.Designer.cs">
+      <DependentUpon>FormaDatosAlumnos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormaAplicacionDeSimulacion.cs">
       <SubType>Form</SubType>
     </Compile>

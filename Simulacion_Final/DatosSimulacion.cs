@@ -9,10 +9,10 @@ namespace Simulacion_Final
     internal class DatosSimulacion
     {
         // Parámetros de entrada
-        public int SemillaX0 { get; set; }
-        public int MultiplicadorA { get; set; }
-        public int ModuloM { get; set; }
-        public int ConstanteAditivaC { get; set; }
+        public long SemillaX0 { get; set; }
+        public long MultiplicadorA { get; set; }
+        public long ModuloM { get; set; }
+        public long ConstanteAditivaC { get; set; }
 
         // Resultado (La lista de números generados)
         public List<double> ListaNumeros { get; set; } = new List<double>();
