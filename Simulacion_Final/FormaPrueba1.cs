@@ -15,6 +15,11 @@ namespace Simulacion_Final
         public FormaPrueba1()
         {
             InitializeComponent();
+
+            _gestorArchivos = new GestorArchivos();
+
+            ConfigurarValoresIniciales();
+            AplicarEstilo();
         }
     }
 }

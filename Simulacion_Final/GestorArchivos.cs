@@ -17,6 +17,31 @@ namespace Simulacion_Final
             VerificarYCrearArchivos();
         }
 
+        public bool TieneValores()
+        {
+            // Revisa que el json tenga valores en todos los datos
+            try
+            {
+                DatosSimulacion datos = CargarNumerosDesdeArchivo();
+                if (datos == null)
+                    return false;
+
+                bool parametrosCompletos = datos.SemillaX0 != 0L
+                    && datos.MultiplicadorA != 0L
+                    && datos.ModuloM != 0L
+                    && datos.ConstanteAditivaC != 0L;
+
+                bool listaValida = datos.ListaNumeros != null && datos.ListaNumeros.Count > 0;
+
+                return parametrosCompletos && listaValida;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al comprobar valores: {ex.Message}");
+                return false;
+            }
+        }
+
         public void VerificarYCrearArchivos()
         {
             AsegurarCarpeta();
