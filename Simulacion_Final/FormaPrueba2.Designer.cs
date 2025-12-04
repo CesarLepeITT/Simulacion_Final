@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data; // Necesario para DataTable
 using System.Drawing;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Simulacion_Final
 {
@@ -90,33 +91,98 @@ namespace Simulacion_Final
             this.lblTitulo.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
 
             // Etiquetas
-            CrearEtiqueta(lblGradoConfianza, "Grado de Confianza", 50, 70);
+            
+            this.lblGradoConfianza.AutoSize = true;
+            this.lblGradoConfianza.Location = new Point(50, 70);
+            this.lblGradoConfianza.Text = "Grado de Confianza";
+            this.lblGradoConfianza.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblGradoConfianza.ForeColor = Color.DimGray;
 
-            CrearEtiqueta(lblAlfa, "Alfa", 50, 150);
-            CrearEtiqueta(lblValorEsperado, "Valor Esperado", 230, 150);
-            CrearEtiqueta(lblVarianza, "Varianza", 410, 150);
 
-            CrearEtiqueta(lblValorDistribucion, "Valor Crítico (Z)", 50, 230);
-            CrearEtiqueta(lblEstadistico, "Estadístico Z0", 230, 230);
-            CrearEtiqueta(lblNCorridas, "Nº Corridas", 410, 230);
+            
+            this.lblAlfa.AutoSize = true;
+            this.lblAlfa.Location = new Point(50, 150);
+            this.lblAlfa.Text = "Alfa";
+            this.lblAlfa.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblAlfa.ForeColor = Color.DimGray;
+
+            
+            this.lblValorEsperado.AutoSize = true;
+            this.lblValorEsperado.Location = new Point(230, 150);
+            this.lblValorEsperado.Text = "Valor Esperado";
+            this.lblValorEsperado.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblValorEsperado.ForeColor = Color.DimGray;
+
+            
+            this.lblVarianza.AutoSize = true;
+            this.lblVarianza.Location = new Point(410, 150);
+            this.lblVarianza.Text = "Varianza";
+            this.lblVarianza.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblVarianza.ForeColor = Color.DimGray; 
+
+            
+            this.lblValorDistribucion.AutoSize = true;
+            this.lblValorDistribucion.Location = new Point(50, 230);
+            this.lblValorDistribucion.Text = "Valor Crítico (Z)";
+            this.lblValorDistribucion.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblValorDistribucion.ForeColor = Color.DimGray;
+
+            
+            this.lblEstadistico.AutoSize = true;
+            this.lblEstadistico.Location = new Point(230, 230);
+            this.lblEstadistico.Text = "Estadístico Z0";
+            this.lblEstadistico.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblEstadistico.ForeColor = Color.DimGray;
+
+            this.lblNCorridas.AutoSize = true;
+            this.lblNCorridas.Location = new Point(410, 230);
+            this.lblNCorridas.Text = "Nº Corridas";
+            this.lblNCorridas.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblNCorridas.ForeColor = Color.DimGray;
 
             // Etiqueta Conclusión
-            CrearEtiqueta(lblConclusion, "", 50, 400);
-            lblConclusion.AutoSize = true;
-            lblConclusion.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            this.lblConclusion.AutoSize = true;
+            this.lblConclusion.Location = new Point(50, 400);
+            this.lblConclusion.Text = "";
+            this.lblConclusion.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblConclusion.ForeColor = Color.DimGray;
 
             // Inputs
-            CrearInput(txtGradoConfianza, 50, 100);
+            
+            this.txtGradoConfianza.Location = new Point(50, 100);
+            this.txtGradoConfianza.Size = new Size(150, 27);
+            this.txtGradoConfianza.Font = new Font("Segoe UI", 10F);
 
             // Outputs
-            CrearOutput(txtAlfa, 50, 180);
-            CrearOutput(txtValorEsperado, 230, 180);
-            CrearOutput(txtVarianza, 410, 180);
+            this.txtAlfa.Location = new Point(50, 180);
+            this.txtAlfa.Size = new Size(150, 27);
+            this.txtAlfa.Font = new Font("Segoe UI", 10F);
+            this.txtAlfa.ReadOnly = true;
 
-            CrearOutput(txtValorDistribucion, 50, 260);
-            CrearOutput(txtEstadistico, 230, 260);
-            CrearOutput(txtNCorridas, 410, 260);
+            this.txtValorEsperado.Location = new Point(230, 180);
+            this.txtValorEsperado.Size = new Size(150, 27);
+            this.txtValorEsperado.Font = new Font("Segoe UI", 10F);
+            this.txtValorEsperado.ReadOnly = true;
 
+            this.txtVarianza.Location = new Point(410, 180);
+            this.txtVarianza.Size = new Size(150, 27);
+            this.txtVarianza.Font = new Font("Segoe UI", 10F);
+            this.txtVarianza.ReadOnly = true;
+
+            this.txtValorDistribucion.Location = new Point(50, 260);
+            this.txtValorDistribucion.Size = new Size(150, 27);
+            this.txtValorDistribucion.Font = new Font("Segoe UI", 10F);
+            this.txtValorDistribucion.ReadOnly = true;
+
+            this.txtEstadistico.Location = new Point(230, 260);
+            this.txtEstadistico.Size = new Size(150, 27);
+            this.txtEstadistico.Font = new Font("Segoe UI", 10F);
+            this.txtEstadistico.ReadOnly = true;
+
+            this.txtNCorridas.Location = new Point(410, 260);
+            this.txtNCorridas.Size = new Size(150, 27);
+            this.txtNCorridas.Font = new Font("Segoe UI", 10F);
+            this.txtNCorridas.ReadOnly = true;
             // Botón Probar
             this.btnProbar.Location = new Point(50, 320);
             this.btnProbar.Name = "btnProbar";

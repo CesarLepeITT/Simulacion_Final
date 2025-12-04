@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Simulacion_Final
 {
@@ -68,19 +69,59 @@ namespace Simulacion_Final
             this.lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             this.lblTitulo.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
 
-            // Etiquetas
-            CrearEtiqueta(lblA, "Multiplicador (a)", 50, 70);
-            CrearEtiqueta(lblC, "Incremento (c)", 230, 70);
-            CrearEtiqueta(lblM, "Módulo (m)", 410, 70);
-            CrearEtiqueta(lblX, "Semilla (X0)", 50, 140);
-            CrearEtiqueta(lblTotal, "Total a generar", 230, 140);
+            // Etiquetas            
+            this.lblA.AutoSize = true;
+            this.lblA.Location = new Point(50, 70);
+            this.lblA.Text = "Multiplicador (a)";
+            this.lblA.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblA.ForeColor = Color.DimGray;
+
+            this.lblC.AutoSize = true;
+            this.lblC.Location = new Point(230, 70);
+            this.lblC.Text = "Incremento (c)";
+            this.lblC.Font  = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblC.ForeColor = Color.DimGray;
+
+            this.lblM.AutoSize = true;
+            this.lblM.Location = new Point(410, 70);
+            this.lblM.Text = "Módulo (m)";
+            this.lblM.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblM.ForeColor = Color.DimGray;
+
+            
+            this.lblX.AutoSize = true;
+            this.lblX.Location = new Point(50, 140);
+            this.lblX.Text = "Semilla (X0)";
+            this.lblX.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblX.ForeColor = Color.DimGray;
+
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new Point(230, 140);
+            this.lblTotal.Text = "Total a generar";
+            this.lblTotal.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblTotal.ForeColor = Color.DimGray;
 
             // Inputs
-            CrearInput(txtA, 50, 95);
-            CrearInput(txtC, 230, 95);
-            CrearInput(txtM, 410, 95);
-            CrearInput(txtX, 50, 165);
-            CrearInput(txtTotal, 230, 165);
+            
+            this.txtA.Location = new Point(50, 95);
+            this.txtA.Size = new Size(150, 27);
+            this.txtA.Font = new Font("Segoe UI", 10F);
+            
+            this.txtC.Location = new Point(230, 95);
+            this.txtC.Size = new Size(150, 27);
+            this.txtC.Font = new Font("Segoe UI", 10F);
+
+            this.txtM.Location = new Point(410, 95);    
+            this.txtM.Size = new Size(150, 27);
+            this.txtM.Font = new Font("Segoe UI", 10F);
+
+            this.txtX.Location = new Point(50, 165);
+            this.txtX.Size = new Size(150, 27);
+            this.txtX.Font = new Font("Segoe UI", 10F);
+
+            this.txtTotal.Location = new Point(230, 165);
+            this.txtTotal.Size = new Size(150, 27);
+            this.txtTotal.Font = new Font("Segoe UI", 10F);
 
             // Botón Generar
             this.btnGenerar.Location = new Point(410, 160);

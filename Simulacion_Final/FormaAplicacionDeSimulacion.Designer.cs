@@ -268,7 +268,7 @@ namespace Simulacion_Final
                     txtResultados.Clear();
                 }
 
-                // D. SIMULACIÓN MONTECARLO
+                // D. SIMULACIÓN 
                 lblEstado.Text = "Simulando escenarios...";
                 lblEstado.ForeColor = Color.Black;
                 Application.DoEvents();
@@ -303,13 +303,13 @@ namespace Simulacion_Final
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 650);
             this.Name = "FormaAplicacionDeSimulacion";
-            this.Text = "Simulación Electoral - Montecarlo";
+            this.Text = "Simulación Electoral";
             this.StartPosition = FormStartPosition.CenterScreen;
 
             this.lblTitulo.Location = new System.Drawing.Point(0, 20);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(800, 40);
-            this.lblTitulo.Text = "Estrategia Electoral (Montecarlo)";
+            this.lblTitulo.Text = "Estrategia Electoral";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Simulacion_Final
 {
@@ -81,27 +82,86 @@ namespace Simulacion_Final
             this.lblTitulo.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
 
             // Etiquetas
-            CrearEtiqueta(lblGradoConfianza, "Grado de Confianza", 50, 70);
-            
-            CrearEtiqueta(lblAlfa, "Alfa", 50, 150);
-            CrearEtiqueta(lblPromedio, "Promedio", 230, 150);
-            CrearEtiqueta(lblZaMedios, "Za/2", 410, 150);
+            this.lblGradoConfianza.AutoSize = true;
+            this.lblGradoConfianza.Location = new Point(50, 70);
+            this.lblGradoConfianza.Text = "Grado de Confianza";
+            this.lblGradoConfianza.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblGradoConfianza.ForeColor = Color.DimGray;
 
-            CrearEtiqueta(lblValorDistribucion, "Valor de distribución", 50, 230);
-            CrearEtiqueta(lblLimiteInferior, "Límite Inferior", 230, 230);
-            CrearEtiqueta(lblLimiteSuperior, "Límite Superior", 410, 230);
+            this.lblAlfa.AutoSize = true;
+            this.lblAlfa.Location = new Point(50, 150);
+            this.lblAlfa.Text = "Alfa";
+            this.lblAlfa.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblAlfa.ForeColor = Color.DimGray;
+
+            this.lblPromedio.AutoSize = true;
+            this.lblPromedio.Location = new Point(230, 150);
+            this.lblPromedio.Text = "Promedio";
+            this.lblPromedio.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblPromedio.ForeColor = Color.DimGray;
+
+
+            this.lblZaMedios.AutoSize = true;
+            this.lblZaMedios.Location = new Point(410, 150);
+            this.lblZaMedios.Text = "Za/2";
+            this.lblZaMedios.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblZaMedios.ForeColor = Color.DimGray;
+
+            this.lblValorDistribucion.AutoSize = true;
+            this.lblValorDistribucion.Location = new Point(50, 230);
+            this.lblValorDistribucion.Text = "Valor de distribución";
+            this.lblValorDistribucion.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblValorDistribucion.ForeColor = Color.DimGray;
+
+            this.lblLimiteInferior.AutoSize = true;
+            this.lblLimiteInferior.Location = new Point(230, 230);
+            this.lblLimiteInferior.Text = "Límite Inferior";
+            this.lblLimiteInferior.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblLimiteInferior.ForeColor = Color.DimGray;
+
+            this.lblLimiteSuperior.AutoSize = true;
+            this.lblLimiteSuperior.Location = new Point(410, 230);
+            this.lblLimiteSuperior.Text = "Límite Superior";
+            this.lblLimiteSuperior.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            this.lblLimiteSuperior.ForeColor = Color.DimGray;
 
             // Inputs (entradas)
-            CrearInput(txtGradoConfianza, 50, 100);
+            this.txtGradoConfianza.Location = new Point(50, 100);
+            this.txtGradoConfianza.Size = new Size(150, 27);
+            this.txtGradoConfianza.Font = new Font("Segoe UI", 10F);
+
 
             // Outputs (solo lectura)
-            CrearOutput(txtAlfa, 50, 180);
-            CrearOutput(txtPromedio, 230, 180);
-            CrearOutput(txtZaMedios, 410, 180);
+            this.txtAlfa.Location = new Point(50, 180);
+            this.txtAlfa.Size = new Size(150, 27);
+            this.txtAlfa.Font = new Font("Segoe UI", 10F);
+            this.txtAlfa.ReadOnly = true;
 
-            CrearOutput(txtValorDistribucion, 50, 260);
-            CrearOutput(txtLimiteInferior, 230, 260);
-            CrearOutput(txtLimiteSuperior, 410, 260);
+            this.txtPromedio.Location = new Point(230, 180);
+            this.txtPromedio.Size = new Size(150, 27);
+            this.txtPromedio.Font = new Font("Segoe UI", 10F);
+            this.txtPromedio.ReadOnly = true;
+
+
+            this.txtZaMedios.Location = new Point(410, 180);
+            this.txtZaMedios.Size = new Size(150, 27);
+            this.txtZaMedios.Font = new Font("Segoe UI", 10F);
+            this.txtZaMedios.ReadOnly = true;
+
+            this.txtValorDistribucion.Location = new Point(50, 260);
+            this.txtValorDistribucion.Size = new Size(150, 27);
+            this.txtValorDistribucion.Font = new Font("Segoe UI", 10F);
+            this.txtValorDistribucion.ReadOnly = true;
+
+            this.txtLimiteInferior.Location = new Point(230, 260);
+            this.txtLimiteInferior.Size = new Size(150, 27);
+            this.txtLimiteInferior.Font = new Font("Segoe UI", 10F);
+            this.txtLimiteInferior.ReadOnly = true;
+
+            this.txtLimiteSuperior.Location = new Point(410, 260);
+            this.txtLimiteSuperior.Size = new Size(150, 27);
+            this.txtLimiteSuperior.Font = new Font("Segoe UI", 10F);
+            this.txtLimiteSuperior.ReadOnly = true;
 
             // Botón Probar
             this.btnProbar.Location = new Point(50, 320);

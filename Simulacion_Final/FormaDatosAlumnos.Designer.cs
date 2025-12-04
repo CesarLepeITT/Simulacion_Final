@@ -18,12 +18,13 @@ namespace Simulacion_Final
         // Colores (Mismo tema visual que las otras formas)
         private readonly Color colorFondo = Color.FromArgb(239, 246, 255);
         private readonly Color colorTextoTitulo = Color.FromArgb(49, 46, 129);
-        private readonly Color colorTextoNormal = Color.FromArgb(30, 41, 59); 
+        //private readonly Color colorTextoNormal = Color.FromArgb(30, 41, 59); 
 
 
 
         private void InitializeComponent()
         {
+            Color colorTextoNormal = Color.FromArgb(30, 41, 59);
             this.lblTitulo = new Label();
             this.lblAlumno1 = new Label();
             this.lblAlumno2 = new Label();
@@ -58,16 +59,42 @@ namespace Simulacion_Final
             //
 
             // Alumno 1
-            ConfigurarLabelAlumno(out lblAlumno1, "Ángel Fabián Pérez Mayen - 24210515", 150);
+            this.lblAlumno1.Text = "Ángel Fabián Pérez Mayen - 24210515";
+            this.lblAlumno1.Location = new Point(0, 80); 
+            this.lblAlumno1.Size = new Size(700, 80);
+            this.lblAlumno1.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblAlumno1.Font = new Font("Segoe UI", 14F, FontStyle.Regular);
+            this.lblAlumno1.ForeColor = colorTextoNormal;
+                     
+            
 
             // Alumno 2
-            ConfigurarLabelAlumno(out lblAlumno2, "Sanchez Resendiz Braulio - 24210531", 230);
+            this.lblAlumno2.Text = "Sanchez Resendiz Braulio - 24210531";
+            this.lblAlumno2.Location = new Point(0, 160); // X=0 para usar el ancho completo y centrar
+            this.lblAlumno2.Size = new Size(700, 80);
+            this.lblAlumno2.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblAlumno2.Font = new Font("Segoe UI", 14F, FontStyle.Regular);
+            this.lblAlumno2.ForeColor = colorTextoNormal;
 
             // Alumno 3
-            ConfigurarLabelAlumno(out lblAlumno3, "Barraza Sánchez Luz del Carmen - 24210471", 310);
+            
+            this.lblAlumno3.Text = "Barraza Sánchez Luz del Carmen - 24210471";
+            this.lblAlumno3.Location = new Point(0, 240); // X=0 para usar el ancho completo y centrar
+            this.lblAlumno3.Size = new Size(700, 80);
+            this.lblAlumno3.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblAlumno3.Font = new Font("Segoe UI", 14F, FontStyle.Regular);
+            this.lblAlumno3.ForeColor = colorTextoNormal;
+
 
             // Alumno 4
-            ConfigurarLabelAlumno(out lblAlumno4, "Lepe Garcia Cesar - C22212360", 390);
+
+            this.lblAlumno4.Text = "Lepe Garcia Cesar - C22212360";
+            this.lblAlumno4.Location = new Point(0, 320); // X=0 para usar el ancho completo y centrar
+            this.lblAlumno4.Size = new Size(700, 80);
+            this.lblAlumno4.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblAlumno4.Font = new Font("Segoe UI", 14F, FontStyle.Regular);
+            this.lblAlumno4.ForeColor = colorTextoNormal;
+
 
             // Materia / Pie de página (Opcional decorativo)
             this.lblMateria.Location = new Point(0, 400);
@@ -91,17 +118,7 @@ namespace Simulacion_Final
             this.ResumeLayout(false);
         }
 
-        // Método auxiliar para configurar las etiquetas de nombres repetitivas
-        private void ConfigurarLabelAlumno(out Label lbl, string texto, int topPosition)
-        {
-            lbl = new Label();
-            lbl.Text = texto;
-            lbl.Location = new Point(0, topPosition); // X=0 para usar el ancho completo y centrar
-            lbl.Size = new Size(700, 80);
-            lbl.TextAlign = ContentAlignment.MiddleCenter;
-            lbl.Font = new Font("Segoe UI", 14F, FontStyle.Regular);
-            lbl.ForeColor = colorTextoNormal;
-        }
+
 
         private void AplicarEstilo()
         {
