@@ -133,11 +133,28 @@ namespace Simulacion_Final
 
         private void ConfigurarValoresIniciales()
         {
-            txtA.Text = "1103515245";
-            txtC.Text = "12345";
-            txtM.Text = "2147483648";
-            txtX.Text = "1";
-            txtTotal.Text = "20";
+           
+            if(!_gestorArchivos.TieneValores())
+            {
+                txtA.Text = "1103515245";
+                txtC.Text = "12345";
+                txtM.Text = "2147483648";
+                txtX.Text = "1";
+                txtTotal.Text = "20";              
+            }
+            else
+            {
+                DatosSimulacion datos = _gestorArchivos.CargarNumerosDesdeArchivo();
+                txtA.Text = datos.MultiplicadorA.ToString();
+                txtC.Text = datos.ConstanteAditivaC.ToString();
+                txtM.Text = datos.ModuloM.ToString();
+                txtX.Text = datos.SemillaX0.ToString();
+                txtTotal.Text = datos.ListaNumeros.Count.ToString();
+                DesplegarDatos(datos);
+
+            }
+
+
         }
 
         private void AplicarEstilo()
@@ -195,7 +212,8 @@ namespace Simulacion_Final
                     MessageBox.Show("Valor inválido del multiplicador. Debe ser mayor a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                else if(c <= 0) {
+                else if (c <= 0)
+                {
                     MessageBox.Show("Valor inválido del incremento. Debe ser mayor a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -204,7 +222,7 @@ namespace Simulacion_Final
                     MessageBox.Show("Valor inválido del módulo. Debe ser mayor a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                else if(total <= 0)
+                else if (total <= 0)
                 {
                     MessageBox.Show("Cantidad inválida a generar. Debe ser mayor a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -219,6 +237,19 @@ namespace Simulacion_Final
 
 
                 // Crear tabla
+                DesplegarDatos(resultados);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DesplegarDatos(DatosSimulacion resultados)
+        {
+            try
+            {
                 var tabla = new System.Data.DataTable();
                 tabla.Columns.Add("Iteración", typeof(int));
                 tabla.Columns.Add("Valor (Xi)", typeof(double));
@@ -232,13 +263,13 @@ namespace Simulacion_Final
                 }
 
                 dgvResultados.DataSource = tabla;
-
-
             }
             catch (Exception ex)
             {
+
                 MessageBox.Show($"Error: {ex.Message}", "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         // Limpieza de recursos

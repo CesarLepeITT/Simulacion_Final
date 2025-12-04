@@ -88,7 +88,8 @@ namespace Simulacion_Final
             CrearEtiqueta(lblZaMedios, "Za/2", 410, 150);
 
             CrearEtiqueta(lblValorDistribucion, "Valor de distribución", 50, 230);
-            CrearEtiqueta(lblLimiteSuperior, "Límite Superior", 230, 230);
+            CrearEtiqueta(lblLimiteInferior, "Límite Inferior", 230, 230);
+            CrearEtiqueta(lblLimiteSuperior, "Límite Superior", 410, 230);
 
             // Inputs (entradas)
             CrearInput(txtGradoConfianza, 50, 100);
@@ -99,11 +100,12 @@ namespace Simulacion_Final
             CrearOutput(txtZaMedios, 410, 180);
 
             CrearOutput(txtValorDistribucion, 50, 260);
-            CrearOutput(txtLimiteSuperior, 230, 260);
+            CrearOutput(txtLimiteInferior, 230, 260);
+            CrearOutput(txtLimiteSuperior, 410, 260);
 
-            // Botón Generar
-            this.btnProbar.Location = new Point(410, 260);
-            this.btnProbar.Name = "btnGenerar";
+            // Botón Probar
+            this.btnProbar.Location = new Point(50, 320);
+            this.btnProbar.Name = "btnProbar";
             this.btnProbar.Size = new Size(150, 35);
             this.btnProbar.Text = "Probar";
             this.btnProbar.UseVisualStyleBackColor = true;
@@ -251,7 +253,7 @@ namespace Simulacion_Final
 
                 // Crear etiqueta de conclusión
                 this.lblConclusion = new Label();
-                CrearEtiqueta(lblConclusion, conclusion, 50, 320);
+                CrearEtiqueta(lblConclusion, conclusion, 50, 400);
                 this.Controls.Add(lblConclusion);
             }
             catch (Exception ex)
