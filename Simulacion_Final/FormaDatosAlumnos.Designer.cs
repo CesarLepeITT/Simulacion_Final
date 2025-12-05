@@ -13,6 +13,7 @@ namespace Simulacion_Final
         private Label lblAlumno2;
         private Label lblAlumno3;
         private Label lblAlumno4;
+        private Label lblAlumno5;
         private Label lblMateria;
 
         // Colores (Mismo tema visual que las otras formas)
@@ -30,6 +31,7 @@ namespace Simulacion_Final
             this.lblAlumno2 = new Label();
             this.lblAlumno3 = new Label();
             this.lblAlumno4 = new Label();
+            this.lblAlumno5 = new Label();
             this.lblMateria = new Label();
 
             this.SuspendLayout();
@@ -95,6 +97,14 @@ namespace Simulacion_Final
             this.lblAlumno4.Font = new Font("Segoe UI", 14F, FontStyle.Regular);
             this.lblAlumno4.ForeColor = colorTextoNormal;
 
+            // Alumno 5
+            this.lblAlumno5.Text = "Murua Ramirez Angel Gerardo - 24210509";
+            this.lblAlumno5.Location = new Point(0, 400); // X=0 para usar el ancho completo y centrar
+            this.lblAlumno5.Size = new Size(700, 80);
+            this.lblAlumno5.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblAlumno5.Font = new Font("Segoe UI", 14F, FontStyle.Regular);
+            this.lblAlumno5.ForeColor = colorTextoNormal;
+
 
             // Materia / Pie de página (Opcional decorativo)
             this.lblMateria.Location = new Point(0, 400);
@@ -113,6 +123,7 @@ namespace Simulacion_Final
             this.Controls.Add(lblAlumno2);
             this.Controls.Add(lblAlumno3);
             this.Controls.Add(lblAlumno4);
+            this.Controls.Add(lblAlumno5);
             this.Controls.Add(lblMateria);
 
             this.ResumeLayout(false);
