@@ -14,6 +14,11 @@ namespace Simulacion_Final
         public long ModuloM { get; set; }
         public long ConstanteAditivaC { get; set; }
 
+        public bool Prueba1 { get; set; }
+        public bool Prueba2 { get; set; }
+
+        public int cantidadNumeros { get; set; }
+
         // Resultado (La lista de números generados)
         public List<double> ListaNumeros { get; set; } = new List<double>();
     }

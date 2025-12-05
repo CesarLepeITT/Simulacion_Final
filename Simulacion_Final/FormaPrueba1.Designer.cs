@@ -191,33 +191,9 @@ namespace Simulacion_Final
             this.PerformLayout();
         }
 
-        private void CrearEtiqueta(Label lbl, string texto, int x, int y)
-        {
-            lbl.AutoSize = true;
-            lbl.Location = new Point(x, y);
-            lbl.Text = texto;
-            lbl.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
-            lbl.ForeColor = Color.DimGray;
-        }
-
-        private void CrearInput(TextBox txt, int x, int y)
-        {
-            txt.Location = new Point(x, y);
-            txt.Size = new Size(150, 27);
-            txt.Font = new Font("Segoe UI", 10F);
-        }
-
-        private void CrearOutput(TextBox txt, int x, int y)
-        {
-            txt.Location = new Point(x, y);
-            txt.Size = new Size(150, 27);
-            txt.Font = new Font("Segoe UI", 10F);
-            txt.ReadOnly = true;
-        }
-
         private void ConfigurarValoresIniciales()
         {
-            txtGradoConfianza.Text = "99";
+            txtGradoConfianza.Text = "95";
         }
 
         private void AplicarEstilo()
@@ -306,14 +282,26 @@ namespace Simulacion_Final
                 txtLimiteSuperior.Text = limSup.ToString("F5");
 
                 // --- Conclusión ---
-                string conclusion =
-                    (promedio >= limInf && promedio <= limSup)
+
+
+                datos.Prueba1 = promedio >= limInf && promedio <= limSup;
+
+                string conclusion = datos.Prueba1
                     ? "Los datos están distribuidos uniformemente."
                     : "Los datos no están distribuidos uniformemente.";
 
+                _gestorArchivos.GuardarNumerosEnArchivo(datos);
+
                 // Crear etiqueta de conclusión
                 this.lblConclusion = new Label();
-                CrearEtiqueta(lblConclusion, conclusion, 50, 400);
+                this.lblConclusion.AutoSize = true;
+                this.lblConclusion.Location = new Point(50, 400);
+                this.lblConclusion.Text = conclusion;
+                this.lblConclusion.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+
+                lblConclusion.ForeColor = datos.Prueba1 ? Color.Green : Color.Red;
+
+
                 this.Controls.Add(lblConclusion);
             }
             catch (Exception ex)

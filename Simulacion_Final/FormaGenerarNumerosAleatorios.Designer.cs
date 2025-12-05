@@ -180,8 +180,8 @@ namespace Simulacion_Final
                 txtA.Text = "1103515245";
                 txtC.Text = "12345";
                 txtM.Text = "2147483648";
-                txtX.Text = "1";
-                txtTotal.Text = "20";              
+                txtX.Text = "42";
+                txtTotal.Text = "50000";              
             }
             else
             {
@@ -273,8 +273,12 @@ namespace Simulacion_Final
                 var generador = new GeneradorNumerosPseudoaleatorios();
                 var resultados = generador.GenerarNumeros(x, a, c, m, total);
 
+                resultados.Prueba1 = false;
+                resultados.Prueba2 = false;
+
                 // Guardar datos en archivo Json
                 _gestorArchivos.GuardarNumerosEnArchivo(resultados);
+
 
 
                 // Crear tabla

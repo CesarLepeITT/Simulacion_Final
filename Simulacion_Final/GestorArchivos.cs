@@ -17,6 +17,9 @@ namespace Simulacion_Final
             VerificarYCrearArchivos();
         }
 
+        
+
+
         public bool TieneValores()
         {
             // Revisa que el json tenga valores en todos los datos
@@ -119,5 +122,6 @@ namespace Simulacion_Final
                 return new DatosSimulacion(); 
             }
         }
+
     }
 }

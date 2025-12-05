@@ -187,36 +187,24 @@ namespace Simulacion_Final
 
 
         // --- MÉTODO DE VALIDACIÓN ESTADÍSTICA (Prueba de Promedios) ---
-        private bool ValidarUniformidad(List<double> numeros)
+        private bool ValidarUniformidad(DatosSimulacion datos)
         {
-            // Usaremos un Nivel de Confianza del 95% (Estándar)
-            // Z para 95% = 1.96
-            double z = 1.96;
-            int n = numeros.Count;
-
-            // 1. Calcular Promedio
-            double promedio = numeros.Sum() / n;
-
-            // 2. Calcular Límites de Aceptación
-            // Fórmula: Media (0.5) +/- Z * (1 / Raíz(12*n))
-            double error = z * (1.0 / Math.Sqrt(12.0 * n));
-            double limiteInferior = 0.5 - error;
-            double limiteSuperior = 0.5 + error;
-
-            // 3. Verificar
-            bool pasoLaPrueba = (promedio >= limiteInferior && promedio <= limiteSuperior);
-
-            if (!pasoLaPrueba)
+            // Verificamos las banderas que ya vienen en el JSON
+            if (!datos.Prueba1)
             {
-                MessageBox.Show($"¡ALERTA ESTADÍSTICA!\n\n" +
-                                $"Los números generados NO pasan la prueba de uniformidad.\n" +
-                                $"Promedio: {promedio:F5}\n" +
-                                $"Rango aceptado: {limiteInferior:F5} - {limiteSuperior:F5}\n\n" +
-                                $"Se recomienda borrar el archivo JSON y generar nuevos números.",
-                                "Fallo de Uniformidad", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("ERROR ESTADÍSTICO: Los datos no pasaron la Prueba de Promedios (Prueba 1).\n\nLa simulación se cancelará.",
+                                "Fallo de Uniformidad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
-            return pasoLaPrueba;
+            if (!datos.Prueba2)
+            {
+                MessageBox.Show("ERROR ESTADÍSTICO: Los datos no pasaron la Prueba de Frecuencias (Prueba 2).\n\nLa simulación se cancelará.",
+                                "Fallo de Uniformidad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
 
         // --- EVENTO PRINCIPAL ---
@@ -226,65 +214,88 @@ namespace Simulacion_Final
 
             try
             {
-                // A. CARGA DE DATOS
-                if (_gestorArchivos.TieneValores())
-                {
-                    lblEstado.Text = "Cargando archivo...";
-                    datos = _gestorArchivos.CargarNumerosDesdeArchivo();
-                }
-
-                // B. GENERACIÓN (Si no existen)
-                if (datos == null || datos.ListaNumeros == null || datos.ListaNumeros.Count == 0)
-                {
-                    lblEstado.Text = "Generando números...";
-                    // Generar 50,000 números
-                    long x0 = 12345;
-                    long a = 1664525;
-                    long c = 1013904223;
-                    long m = (long)Math.Pow(2, 32);
-
-                    var generador = new GeneradorNumerosPseudoaleatorios();
-                    var numeros = generador.GenerarNumeros(x0, a, c, m, 50000);
-                    datos = numeros;
-                    _gestorArchivos.GuardarNumerosEnArchivo(datos);
-                }
-
-                // C. VALIDACIÓN DE UNIFORMIDAD (¡NUEVO PASO!)
-                lblEstado.Text = "Validando estadística...";
-                Application.DoEvents(); // Refrescar pantalla
-
-                if (!ValidarUniformidad(datos.ListaNumeros))
-                {
-                    lblEstado.Text = "Error: Distribución no uniforme.";
-                    lblEstado.ForeColor = Color.Red;
-                    // Opcional: ¿Quieres detener la simulación si falla?
-                    // return; // Descomenta esto si quieres ser estricto y no dejar simular
-
-                    // Si decides continuar bajo riesgo:
-                    txtResultados.Text = "ADVERTENCIA: Los resultados pueden no ser confiables porque los números no pasaron la prueba de promedios.\n\n";
-                }
-                else
-                {
-                    txtResultados.Clear();
-                }
-
-                // D. SIMULACIÓN 
-                lblEstado.Text = "Simulando escenarios...";
+                lblEstado.Text = "Cargando datos...";
                 lblEstado.ForeColor = Color.Black;
                 Application.DoEvents();
 
+                // ---------------------------------------------------------
+                // PASO 1: CARGA DE DATOS (Solo lectura, NO generación)
+                // ---------------------------------------------------------
+                if (_gestorArchivos.TieneValores())
+                {
+                    datos = _gestorArchivos.CargarNumerosDesdeArchivo();
+                }
+                else
+                {
+                    lblEstado.Text = "Error: Sin datos.";
+                    lblEstado.ForeColor = Color.Red;
+                    MessageBox.Show("El archivo JSON no existe o está vacío.\nNo se generarán nuevos números.",
+                                    "Simulación Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // CANCELAR
+                }
+
+                // Validación extra por si el objeto viene nulo o la lista vacía
+                if (datos == null || datos.ListaNumeros == null || datos.ListaNumeros.Count == 0)
+                {
+                    lblEstado.Text = "Error: Lista vacía.";
+                    lblEstado.ForeColor = Color.Red;
+                    MessageBox.Show("No se encontraron números en el archivo cargado.",
+                                    "Simulación Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // CANCELAR
+                }
+
+                // ---------------------------------------------------------
+                // PASO 2: VALIDACIÓN ESTADÍSTICA (Pruebas)
+                // ---------------------------------------------------------
+                lblEstado.Text = "Validando estadística...";
+                Application.DoEvents();
+
+                if (!ValidarUniformidad(datos))
+                {
+                    lblEstado.Text = "Error: Fallo estadístico.";
+                    lblEstado.ForeColor = Color.Red;
+                    return; // CANCELAR (El MessageBox ya se mostró en el método Validar)
+                }
+
+                // ---------------------------------------------------------
+                // PASO 3: VALIDACIÓN DE CANTIDAD SUFICIENTE
+                // ---------------------------------------------------------
+                // Cálculo: 200,000 hab * 5% muestra = 10,000 votantes.
+                // 10,000 votantes * 3 votos c/u = 30,000 números necesarios.
+                int cantidadNecesaria = 30000;
+
+                if (datos.ListaNumeros.Count < cantidadNecesaria)
+                {
+                    lblEstado.Text = "Error: Insuficientes números.";
+                    lblEstado.ForeColor = Color.Red;
+                    MessageBox.Show($"Números insuficientes para la simulación.\n\n" +
+                                    $"Requeridos: {cantidadNecesaria}\n" +
+                                    $"Disponibles: {datos.ListaNumeros.Count}\n\n" +
+                                    "Genere más números en el módulo correspondiente.",
+                                    "Simulación Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return; // CANCELAR
+                }
+
+                // ---------------------------------------------------------
+                // PASO 4: EJECUCIÓN DE LA SIMULACIÓN
+                // ---------------------------------------------------------
+                lblEstado.Text = "Simulando escenarios...";
+                Application.DoEvents();
+
+                txtResultados.Clear(); // Limpiamos resultados anteriores
+
                 SimuladorElectoral motor = new SimuladorElectoral(datos.ListaNumeros);
-
-                // Usamos AppendText para no borrar la advertencia si hubo una
                 string reporte = motor.EjecutarSimulacion();
-                txtResultados.AppendText(reporte);
 
-                lblEstado.Text = "Simulación completada.";
+                txtResultados.Text = reporte;
+
+                lblEstado.Text = "Simulación completada con éxito.";
                 lblEstado.ForeColor = Color.Green;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                lblEstado.Text = "Error en ejecución.";
+                MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

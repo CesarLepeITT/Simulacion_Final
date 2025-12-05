@@ -371,16 +371,20 @@ namespace Simulacion_Final
                 txtValorEsperado.Text = valorEsperado.ToString("F4");
                 txtVarianza.Text = desviacionEstandar.ToString("F4");
                 txtEstadistico.Text = datEstadisticos.ToString("F4");
-                txtNCorridas.Text = (nCorridas + 1).ToString(); 
+                txtNCorridas.Text = (nCorridas + 1).ToString();
 
                 // Conclusión
-                bool pasaPrueba = (datEstadisticos > zcriticoInf && datEstadisticos < zcritico);
+                
+                datos.Prueba2 = (datEstadisticos > zcriticoInf && datEstadisticos < zcritico);
 
-                lblConclusion.Text = pasaPrueba
+                lblConclusion.Text = datos.Prueba2
                     ? "Los datos están distribuidos uniformemente."
                     : "Los datos no están distribuidos uniformemente.";
 
-                lblConclusion.ForeColor = pasaPrueba ? Color.Green : Color.Red;
+                lblConclusion.ForeColor = datos.Prueba2 ? Color.Green : Color.Red;
+
+                _gestorArchivos.GuardarNumerosEnArchivo(datos);
+
             }
             catch (Exception ex)
             {
